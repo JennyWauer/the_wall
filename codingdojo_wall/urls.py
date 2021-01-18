@@ -1,5 +1,7 @@
 from django.urls import path
 
+from . import views
+
 urlpatterns = [
-    path('/codingdojo_wall', views.wall),
+    path('', views.wall),
 ]

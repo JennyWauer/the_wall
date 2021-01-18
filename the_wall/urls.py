@@ -17,5 +17,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path('', include('login.urls')),
-    path('/codingDojo_wall', include('codingdojo_wall.urls')),
+    path('codingdojo_wall/', include('codingdojo_wall.urls')),
 ]
