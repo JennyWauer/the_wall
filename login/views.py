@@ -25,11 +25,11 @@ def register(request):
         errors = User.objects.basic_validator(request.POST)
         if User.objects.filter(email=request.POST['email']):
             messages.error(request, 'Email is already registered. Please login!')
-            return redirect('/login')
+            return redirect('/')
         if len(errors) > 0:
             for key, value in errors.items():
                 messages.error(request, value)
-            return redirect('/login')
+            return redirect('/')
         else:
             password = request.POST['password']
             pw_hash = bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()    
@@ -42,7 +42,7 @@ def register(request):
             request.session['userid'] = new_user.id
             messages.success(request, "User successfully created")
             return redirect('/success')
-    return redirect('/login')
+    return redirect('/')
 
 def user_login(request):
     if request.method == 'GET':
