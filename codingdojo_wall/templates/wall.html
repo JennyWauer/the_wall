@@ -8,6 +8,32 @@
     <title>CodingDojo Wall</title>
 </head>
 <body>
-    <h1>It's working</h1>
+    <header class="d-flex p-2 align-items-baseline">
+        <h1 class="mr-auto">CodingDojo Wall</h1>
+        <p class="pr-5">Welcome Name</p>
+        <a class="pr-2 pl-3" href="/">log off</a>
+    </header>
+    <div class="p-5 w-75">
+        <form action="/add_message" method="POST">
+            {% csrf_token %}
+            <label class="d-block mt-2 h4" for="message">Post a messsage</label>
+            <textarea class="d-block mt-2 w-100" name="message" id="message" cols="30" rows="5"></textarea>
+            <input class="d-block mt-2 ml-auto bg-primary text-white" type="submit" name="submit" value="Post Message">
+        </form>
+    </div>
+    <div class="p-5 w-75">
+        <form action="/add_comment" method="POST">
+            <label class="d-block mt-2" for="comment">Post a comment</label>
+            <textarea class="d-block mt-2 w-100" name="comment" id="comment" cols="30" rows="5"></textarea>
+            <input type="hidden" name="post_id" value="{{ post.id }}">
+            <input class="d-block mt-2 ml-auto bg-success text-white" type="submit" name="post_comment" value="Post Comment">
+        </form>
+    </div>
+    <div class="p-5 w-75">
+        <form action="/delete" method="POST">
+            <input type="hidden" name="comment_id" value="{{ comment.id }}">
+            <input class="d-block mt-2 ml-auto bg-danger text-white" type="button" name="delete_comment" value="Delete">
+        </form>
+    </div>
 </body>
 </html>
