@@ -7,8 +7,8 @@ from django.contrib import messages
 import bcrypt
 
 # Create your views here.
-def home(request):
-    return render(request, 'home.html')
+def index(request):
+    return render(request, 'index.html')
 
 def success(request):
     if 'userid' in request.session:
@@ -18,18 +18,18 @@ def success(request):
                 "user": user[0]
             }
         return render(request, 'success.html', context)
-    return redirect('/')
+    return redirect('/login')
 
 def register(request):
     if request.method == 'POST':
         errors = User.objects.basic_validator(request.POST)
         if User.objects.filter(email=request.POST['email']):
             messages.error(request, 'Email is already registered. Please login!')
-            return redirect('/')
+            return redirect('/login')
         if len(errors) > 0:
             for key, value in errors.items():
                 messages.error(request, value)
-            return redirect('/')
+            return redirect('/login')
         else:
             password = request.POST['password']
             pw_hash = bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()    
@@ -42,7 +42,7 @@ def register(request):
             request.session['userid'] = new_user.id
             messages.success(request, "User successfully created")
             return redirect('/success')
-    return redirect('/')
+    return redirect('/login')
 
 def user_login(request):
     if request.method == 'GET':
