@@ -32,7 +32,8 @@
         <p>{{ comment.comment }}</p>
         {% endfor %}
         <div class="w-75">
-            <form action="/add_comment" method="POST">
+            <form action="/wall/add_comment" method="POST">
+                {% csrf_token %}
                 <label class="d-block mt-2" for="comment">Post a comment</label>
                 <textarea class="d-block mt-2 w-100" name="comment" id="comment" cols="30" rows="5"></textarea>
                 <input type="hidden" name="message_id" value="{{ message.id }}">
