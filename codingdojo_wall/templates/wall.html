@@ -30,6 +30,12 @@
         {% for comment in comments %}
         <p class="ml-3">{{ user.id }} {{ message.created_at }}</p>
         <p class="ml-3">{{ comment.comment }}</p>
+        <div>
+            <form action="/wall/delete" method="POST">
+                <input type="hidden" name="comment_id" value="{{ comment.id }}">
+                <input class="d-block mt-2 ml-auto bg-danger text-white" type="button" name="delete_comment" value="Delete">
+            </form>
+        </div>
         {% endfor %}
         <div>
             <form class="ml-3" action="/wall/add_comment" method="POST">
@@ -41,13 +47,6 @@
             </form>
         </div>
         {% endfor %}
-    </div>
-    
-    <div class="p-5 w-75">
-        <form action="/delete" method="POST">
-            <input type="hidden" name="comment_id" value="{{ comment.id }}">
-            <input class="d-block mt-2 ml-auto bg-danger text-white" type="button" name="delete_comment" value="Delete">
-        </form>
     </div>
 </body>
 </html>
