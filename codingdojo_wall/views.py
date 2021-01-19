@@ -25,3 +25,11 @@ def add_comment(request):
     if request.method == 'POST':
         Comment.objects.create(user_id=User.objects.get(id=request.session['userid']),message_id=Message.objects.get(id=request.POST['message_id']),comment=request.POST['comment'])
         return redirect('/wall')
+
+def delete(request):
+    if request.method == 'GET':
+        return redirect('/wall')
+    if request.methos == 'POST':
+        comment_to_delete = Comment.objects.get(id=request.POST['comment_id'])
+        comment_to_delete.delete()
+        return redirect('/wall')

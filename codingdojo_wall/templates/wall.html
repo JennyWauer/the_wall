@@ -33,7 +33,7 @@
         <div>
             <form action="/wall/delete" method="POST">
                 <input type="hidden" name="comment_id" value="{{ comment.id }}">
-                <input class="d-block mt-2 ml-auto bg-danger text-white" type="button" name="delete_comment" value="Delete">
+                <input class="d-block mt-2 ml-auto bg-danger text-white" type="submit" name="delete_comment" value="Delete">
             </form>
         </div>
         {% endfor %}
