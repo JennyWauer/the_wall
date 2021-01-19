@@ -28,11 +28,11 @@
         <p>{{ user.id }} {{ message.created_at }}</p>
         <p>{{ message.message }}</p>
         {% for comment in comments %}
-        <p>{{ user.id }} {{ message.created_at }}</p>
-        <p>{{ comment.comment }}</p>
+        <p class="ml-3">{{ user.id }} {{ message.created_at }}</p>
+        <p class="ml-3">{{ comment.comment }}</p>
         {% endfor %}
-        <div class="w-75">
-            <form action="/wall/add_comment" method="POST">
+        <div>
+            <form class="ml-3" action="/wall/add_comment" method="POST">
                 {% csrf_token %}
                 <label class="d-block mt-2" for="comment">Post a comment</label>
                 <textarea class="d-block mt-2 w-100" name="comment" id="comment" cols="30" rows="5"></textarea>
