@@ -25,7 +25,12 @@
     </div>
     <div class="p-5 w-75">
         {% for message in messages %}
+        <p>{{ user.id }} {{ message.created_at }}</p>
         <p>{{ message.message }}</p>
+        {% for comment in comments %}
+        <p>{{ user.id }} {{ message.created_at }}</p>
+        <p>{{ comment.comment }}</p>
+        {% endfor %}
         <div class="w-75">
             <form action="/add_comment" method="POST">
                 <label class="d-block mt-2" for="comment">Post a comment</label>
