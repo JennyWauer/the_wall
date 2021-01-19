@@ -19,6 +19,7 @@
             {% csrf_token %}
             <label class="d-block mt-2 h4" for="message">Post a messsage</label>
             <textarea class="d-block mt-2 w-100" name="message" id="message" cols="30" rows="5"></textarea>
+            <input type="hidden" name="user_id" value="{{ user.id }}">
             <input class="d-block mt-2 ml-auto bg-primary text-white" type="submit" name="submit" value="Post Message">
         </form>
     </div>
