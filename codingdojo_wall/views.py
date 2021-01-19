@@ -5,4 +5,7 @@ from .models import *
 from login.models import User
 
 def wall(request):
-    return render(request, 'wall.html')
+    context = {
+        "user": User.objects.filter(id=request.session['userid']),
+    }
+    return render(request, 'wall.html', context)
