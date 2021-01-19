@@ -1,6 +1,6 @@
 from django.db import models
 
-from codingdojo_wall import models
+from login.models import User
 
 class Message(models.Model):
     user_id = models.ForeignKey(User, related_name="messages", on_delete = models.CASCADE)
