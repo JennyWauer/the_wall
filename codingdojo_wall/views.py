@@ -5,12 +5,14 @@ from .models import *
 from login.models import User
 
 def wall(request):
-    context = {
-        "user": User.objects.get(id=request.session['userid']),
-        "messages": Message.objects.all(),
-        "comments": Comment.objects.all(),
-    }
-    return render(request, 'wall.html', context)
+    if 'userid' in request.session:
+        context = {
+            "user": User.objects.get(id=request.session['userid']),
+            "messages": Message.objects.all(),
+            "comments": Comment.objects.all(),
+        }
+        return render(request, 'wall.html', context)
+    redirect('/')
 
 def add_message(request):
     if request.method == 'GET':
