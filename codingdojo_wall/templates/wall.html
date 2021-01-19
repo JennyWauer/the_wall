@@ -32,6 +32,7 @@
         <p class="ml-3">{{ comment.comment }}</p>
         <div>
             <form action="/wall/delete" method="POST">
+                {% csrf_token %}
                 <input type="hidden" name="comment_id" value="{{ comment.id }}">
                 <input class="d-block mt-2 ml-auto bg-danger text-white" type="submit" name="delete_comment" value="Delete">
             </form>

@@ -29,7 +29,7 @@ def add_comment(request):
 def delete(request):
     if request.method == 'GET':
         return redirect('/wall')
-    if request.methos == 'POST':
+    if request.method == 'POST':
         comment_to_delete = Comment.objects.get(id=request.POST['comment_id'])
         comment_to_delete.delete()
         return redirect('/wall')
