@@ -11,7 +11,10 @@
     <header class="d-flex p-2 align-items-baseline">
         <h1 class="mr-auto">CodingDojo Wall</h1>
         <p class="pr-5">Welcome {{ user.first_name}}</p>
-        <a class="pr-2 pl-3" href="/">log off</a>
+        <form action="/wall/log_off">
+            {% csrf_token %}
+            <input class="btn btn-link" type="submit" name="log_off" value="log off">
+        </form>
     </header>
     <hr class="bg-dark">
     <div class="p-5 w-75">
