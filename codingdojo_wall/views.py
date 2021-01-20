@@ -37,3 +37,10 @@ def delete(request):
             comment_to_delete.delete()
             return redirect('/wall')
         return redirect('/wall')
+
+def log_off(request):
+    if request.method == 'GET':
+        return redirect('/wall')
+    if request.method == 'POST':
+        request.session.clear()
+        return redirect('/')
