@@ -32,6 +32,8 @@ def delete(request):
     if request.method == 'GET':
         return redirect('/wall')
     if request.method == 'POST':
-        comment_to_delete = Comment.objects.get(id=request.POST['comment_id'])
-        comment_to_delete.delete()
+        if request.session['userid'] == int(request.POST['user_id']):
+            comment_to_delete = Comment.objects.get(id=request.POST['comment_id'])
+            comment_to_delete.delete()
+            return redirect('/wall')
         return redirect('/wall')

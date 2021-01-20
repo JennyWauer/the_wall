@@ -10,7 +10,7 @@
 <body>
     <header class="d-flex p-2 align-items-baseline">
         <h1 class="mr-auto">CodingDojo Wall</h1>
-        <p class="pr-5">Welcome Name</p>
+        <p class="pr-5">Welcome {{ user.first_name}}</p>
         <a class="pr-2 pl-3" href="/">log off</a>
     </header>
     <hr class="bg-dark">
@@ -34,6 +34,7 @@
             <form action="/wall/delete" method="POST">
                 {% csrf_token %}
                 <input type="hidden" name="comment_id" value="{{ comment.id }}">
+                <input type="hidden" name="user_id" value="{{ user.id }}">
                 <input class="d-block mt-2 ml-auto bg-danger text-white" type="submit" name="delete_comment" value="Delete">
             </form>
         </div>
